@@ -11,5 +11,5 @@ typedef struct t_notez_db {
 NotezDB *notez_init(char *);
 
 /* callbacks */
-static int notez_default_callback(void *, int, char **, char **);
-static int notez_list_callback(void *, int, char **, char **);
+extern int notez_default_callback(void *, int, char **, char **);
+extern int notez_list_callback(void *, int, char **, char **);

@@ -1,6 +1,6 @@
 #include <notez.h>
 
-static int notez_default_callback(void *not_used, int argc, char **argv, char **col_name)
+int notez_default_callback(void *not_used, int argc, char **argv, char **col_name)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -10,7 +10,7 @@ static int notez_default_callback(void *not_used, int argc, char **argv, char **
     return 0;
 }
 
-static int notez_list_callback(void *not_used, int argc, char **argv, char **col_name)
+int notez_list_callback(void *not_used, int argc, char **argv, char **col_name)
 {
     int i;
     for (i = 0; i < argc; i++)
