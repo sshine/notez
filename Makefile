@@ -1,2 +1,2 @@
 default:
-	gcc -o notez -lsqlite3 -I. -I/usr/include notez.c
+	gcc -o notez db.c main.c -lsqlite3 -I. -I/usr/include
