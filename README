@@ -1,0 +1,12 @@
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Notez is a note-taking app
+  for the UNIX-based terminal.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Available commands should be:
+
+  notez [<list>]
+  notez a[dd] [<title> [<message>]]
+  notez d[el] [<title>|<num>]
+  notez s[earch] [<str>]
+  notez rs[earch] [<regex>]

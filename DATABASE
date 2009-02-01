@@ -1,0 +1,13 @@
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   Notez is a note-taking app
+  for the UNIX-based terminal.
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Notez uses SQLite3 with the current database schema:
+
+CREATE TABLE IF NOT EXISTS notez (
+    id integer primary key,
+    title text,
+    note text,
+    changed datetime
+)
