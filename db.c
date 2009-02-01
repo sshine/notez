@@ -1,6 +1,16 @@
 #include <notez.h>
 
-static int callback(void *not_used, int argc, char **argv, char **col_name)
+static int notez_default_callback(void *not_used, int argc, char **argv, char **col_name)
+{
+    int i;
+    for (i = 0; i < argc; i++)
+    {
+        printf("%s = %s\n", col_name[i], argv[i] ? argv[i] : "NULL");
+    }
+    return 0;
+}
+
+static int notez_list_callback(void *not_used, int argc, char **argv, char **col_name)
 {
     int i;
     for (i = 0; i < argc; i++)
@@ -26,7 +36,7 @@ NotezDB *notez_init(char *filename)
         exit(1);
     }
 
-    status = sqlite3_exec(ndb->db, NOTEZ_DB_INIT, callback, NULL, &errMsg);
+    status = sqlite3_exec(ndb->db, NOTEZ_DB_INIT, notez_default_callback, NULL, &errMsg);
     if (status != SQLITE_OK)
     {
         fprintf(stderr, "SQL Error: %s\n", errMsg);
@@ -44,7 +54,7 @@ void notez_list(NotezDB *ndb)
     errMsg = NULL;
 
     status = sqlite3_exec(ndb->db, "SELECT * FROM notez",
-                          callback, NULL, &errMsg);
+                          notez_list_callback, NULL, &errMsg);
     if (status != SQLITE_OK)
     {
         fprintf(stderr, "SQL Error: %s\n", errMsg);
