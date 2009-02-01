@@ -10,3 +10,13 @@ Available commands should be:
   notez d[el] [<title>|<num>]
   notez s[earch] [<str>]
   notez rs[earch] [<regex>]
+
+Notez is also an exercise in
+  * C programming
+  * the use of git
+  * teamwork
+
+Current plan is to implement support for:
+  * SQLite3 back-end for database storage
+  * PCRE support for regex-based searches
+

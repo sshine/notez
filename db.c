@@ -1,16 +1,53 @@
 #include <notez.h>
 
+static int callback(void *not_used, int argc, char **argv, char **col_name)
+{
+    int i;
+    for (i = 0; i < argc; i++)
+    {
+        printf("%s = %s\n", col_name[i], argv[i] ? argv[i] : "NULL");
+    }
+    return 0;
+}
+
 NotezDB *notez_init(char *filename)
 {
-    NotezDB *tmp;
+    NotezDB *ndb;
     int status;
+    char *errMsg;
 
-    tmp = (NotezDB *) malloc(sizeof(NotezDB));
-    status = sqlite3_open(filename, &(tmp->db));
+    errMsg = NULL;
+
+    ndb = (NotezDB *) malloc(sizeof(NotezDB));
+    status = sqlite3_open(filename, &(ndb->db));
     if (status) {
-        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(tmp->db));
-        sqlite3_close(tmp->db);
+        fprintf(stderr, "Can't open database: %s\n", sqlite3_errmsg(ndb->db));
+        sqlite3_close(ndb->db);
         exit(1);
     }
-    return tmp;
+
+    status = sqlite3_exec(ndb->db, NOTEZ_DB_INIT, callback, NULL, &errMsg);
+    if (status != SQLITE_OK)
+    {
+        fprintf(stderr, "SQL Error: %s\n", errMsg);
+        sqlite3_free(errMsg);
+    }
+
+    return ndb;
+}
+
+void notez_list(NotezDB *ndb)
+{
+    int status;
+    char *errMsg;
+
+    errMsg = NULL;
+
+    status = sqlite3_exec(ndb->db, "SELECT * FROM notez",
+                          callback, NULL, &errMsg);
+    if (status != SQLITE_OK)
+    {
+        fprintf(stderr, "SQL Error: %s\n", errMsg);
+        sqlite3_free(errMsg);
+    }
 }
