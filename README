@@ -19,4 +19,4 @@ Notez is also an exercise in
 Current plan is to implement support for:
   * SQLite3 back-end for database storage
   * PCRE support for regex-based searches
-
+  * hierarchical indexing
