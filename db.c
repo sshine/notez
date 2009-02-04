@@ -33,7 +33,7 @@ void notez_list(NotezDB *ndb)
 
     errMsg = NULL;
 
-    status = sqlite3_exec(ndb->db, "SELECT * FROM notez",
+    status = sqlite3_exec(ndb->db, NOTEZ_DB_LIST_QUERY,
                           notez_list_callback, NULL, &errMsg);
     if (status != SQLITE_OK)
     {
