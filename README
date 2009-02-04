@@ -5,11 +5,10 @@
 
 Available commands should be:
 
-  notez [<list>]
-  notez a[dd] [<title> [<message>]]
-  notez d[el] [<title>|<num>]
-  notez s[earch] [<str>]
-  notez rs[earch] [<regex>]
+  notez [list]
+  notez add [<title> [<message>]]
+  notez del <title>/<num>
+  notez search <str>
 
 Notez is also an exercise in
   * C programming

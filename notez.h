@@ -16,6 +16,9 @@ void notez_list(NotezDB *);
 
 char *duration(char *);
 
+void notez_shorthelp(void);
+void notez_longhelp(void);
+
 /* callbacks */
 extern int notez_default_callback(void *, int, char **, char **);
 extern int notez_list_callback(void *, int, char **, char **);
